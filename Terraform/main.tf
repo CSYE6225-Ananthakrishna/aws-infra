@@ -195,7 +195,9 @@ resource "aws_instance" "Terraform_Managed" {
   vpc_security_group_ids = [aws_security_group.instance.id]
   associate_public_ip_address = true  # enable public IP and DNS for the instance
   disable_api_termination = true
-
+  root_block_device {
+    volume_size = 50 # root volume size in GB
+}
   tags = {
     Name = "Application-run_AMI"
   }
