@@ -9,7 +9,7 @@ private_subnet2_cidr = "10.0.5.0/24"
 private_subnet3_cidr = "10.0.6.0/24"
 private_routetable_cidr = "0.0.0.0/0"
 public_routetable_cidr = "0.0.0.0/0"
-ami_id = "ami-09a52c31435b75742"
+ami_id = "ami-0e901b4860243c29a"
 
 //amazonlinux-ami = "ami-0dfcb1ef8550277af"
 db_username     = "postgres"
