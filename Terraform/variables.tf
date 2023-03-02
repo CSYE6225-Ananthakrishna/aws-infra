@@ -95,11 +95,3 @@ variable "db_host" {
 # variable "db_name" {
 #   #default = "hostname"
 # }
-
-variable "access_key" {
-  type = string
-}
-
-variable "secret_key" {
-  type = string
-}
