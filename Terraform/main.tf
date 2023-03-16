@@ -350,6 +350,9 @@ resource "aws_instance" "Terraform_Managed" {
   vpc_security_group_ids      = [aws_security_group.instance.id]
   associate_public_ip_address = true # enable public IP and DNS for the instance
   disable_api_termination     = false
+  depends_on = [
+    aws_db_instance.rds_instance
+  ]
   user_data = <<-EOF
 #!/bin/bash
 cd /home/ec2-user/script
