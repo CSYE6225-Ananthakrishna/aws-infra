@@ -231,7 +231,7 @@ resource "aws_lb" "load_balancer" {
   security_groups    = [aws_security_group.load_balancer.id]
   subnets            = [aws_subnet.public-1.id, aws_subnet.public-2.id, aws_subnet.public-3.id]
 
-  enable_deletion_protection = true
+  enable_deletion_protection = false
 
   tags = {
     Environment = "loadbalancer"
