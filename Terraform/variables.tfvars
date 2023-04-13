@@ -9,7 +9,7 @@ private_subnet2_cidr    = "10.0.5.0/24"
 private_subnet3_cidr    = "10.0.6.0/24"
 private_routetable_cidr = "0.0.0.0/0"
 public_routetable_cidr  = "0.0.0.0/0"
-ami_id                  = "ami-03241e21e96b4ce5a"
+ami_id                  = "ami-08940fbe8e85fc22e"
 domain_name             = "demo.ananthakrishnakalle.me"
 account_id             = "449782747509"
 

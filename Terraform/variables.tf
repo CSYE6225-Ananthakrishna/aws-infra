@@ -99,3 +99,7 @@ variable "db_host" {
 variable "domain_name" {
 
 }
+
+variable "account_id" {
+  type = string
+}
