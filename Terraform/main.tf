@@ -212,6 +212,14 @@ resource "aws_security_group" "load_balancer" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+
   egress {
     from_port   = 0
     to_port     = 0
@@ -260,8 +268,10 @@ resource "aws_lb_target_group" "alb_tg" {
 resource "aws_lb_listener" "lb_listener" {
 
   load_balancer_arn = aws_lb.load_balancer.arn
-  port              = "80"
-  protocol          = "HTTP"
+  port              = "443"
+  protocol          = "HTTPS"
+  certificate_arn =  "arn:aws:acm:us-east-1:449782747509:certificate/1d9de860-23b7-4f82-ab3f-251e89d3c75f"
+  ssl_policy = "ELBSecurityPolicy-TLS-1-2-Ext-2018-06"
   default_action {
     type             = "forward"
     target_group_arn = aws_lb_target_group.alb_tg.arn
@@ -322,7 +332,7 @@ resource "aws_iam_policy" "webapp_s3_policy" {
 
 resource "aws_s3_bucket" "private_s3_bucket" {
   bucket        = "my-bucket-${random_id.random.hex}"
-  acl           = "private"
+ // acl           = "private"
   force_destroy = true
 
   tags = {
@@ -418,6 +428,7 @@ resource "aws_db_instance" "rds_instance" {
   skip_final_snapshot    = true
   parameter_group_name   = aws_db_parameter_group.postgres_params.name
   vpc_security_group_ids = [aws_security_group.database.id]
+  storage_encrypted = true
 
   tags = {
     Name = "csye6225-rds"
